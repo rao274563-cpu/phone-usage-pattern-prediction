@@ -13,9 +13,9 @@ with open("models/xgboost_model.pkl", "rb") as file:
 with open("models/label_encoder.pkl", "rb") as file:
     label_encoder = pkl.load(file)    
 
-# Load Scaler
-with open("models/scaler.pkl", "rb") as file:
-    scaler = pkl.load(file)
+# # Load Scaler
+# with open("models/scaler.pkl", "rb") as file:
+#     scaler = pkl.load(file)
 
 # Load Feature Columns
 with open("models/feature_columns.pkl", "rb") as file:
@@ -265,7 +265,7 @@ elif page == "🤖 Prediction":
 
     gender = st.selectbox(
         "Gender",
-        ["Male", "Female"]
+        ["Male", "Female", "Other"]
     )
     
     location = st.selectbox(
@@ -292,23 +292,26 @@ elif page == "🤖 Prediction":
 
     data_usage = st.number_input(
         "Data Usage (GB/month)",
-        0.0,
-        5000.0,
-        5.0
+        min_value = 1.0,
+        max_value = 50.0,
+        value = 5.0,
+        step = 0.5
     )
 
     calls = st.number_input(
         "Calls Duration (mins/day)",
-        0.0,
-        1000.0,
-        60.0
+        min_value=5.0,
+        max_value=300.0,
+        value=150.0,
+        step=5.0
     )
 
     apps = st.number_input(
         "Number of Apps installed",
-        0,
-        500,
-        10
+        min_value=10,
+        max_value=200,
+        value = 100,
+        step = 1
     )
     
     social = st.number_input(
@@ -341,9 +344,10 @@ elif page == "🤖 Prediction":
 
     recharge = st.number_input(
         "Monthly Recharge Cost (INR)",
-        0.0,
-        5000.0,
-        500.0
+        min_value=100.0,
+        max_value=2000.0,
+        value=1000.0,
+        step=50.0
     )
 
     predict = st.button("Predict")
@@ -355,7 +359,7 @@ elif page == "🤖 Prediction":
             "Phone Brand" : [phone_brand],
             "OS" : [operating_system],
             "Screen Time (hrs/day)" : [screen_time],
-            "Data Usage (MB/day)":[data_usage],
+            "Data Usage (GB/month)":[data_usage],
             "Calls Duration (mins/day)":[calls],
             "Number of Apps Installed":[apps],
             "Social Media Time (hrs/day)":[social],
@@ -373,15 +377,12 @@ elif page == "🤖 Prediction":
             fill_value=0
         )
 
-        # Scale the input
-        input_scaled = scaler.transform(input_encoded)
 
         # Prediction
-        prediction = model.predict(input_scaled)
+        prediction = model.predict(input_encoded)
 
         # Prediction Probability
-
-        probabilities = model.predict_proba(input_scaled)
+        probabilities = model.predict_proba(input_encoded)
 
         # Highest confidence score
         confidence = np.max(probabilities) * 100
@@ -406,7 +407,7 @@ elif page == "🧩 Clustering":
             "K-Means",
             "Hierarchical",
             "DBSCAN",
-            "Guassian Mixture"
+            "Gaussian Mixture"
         ],
         "Silhouette Score": [
             0.124708,
@@ -431,7 +432,7 @@ elif page == "🧩 Clustering":
     )
 
     ax.set_xlabel("Clustering Algorithm")
-    ax.set_ylabel("Silhoette Score")
+    ax.set_ylabel("Silhouette Score")
     ax.set_title("Comparison of Clustering Algorithms")
 
     st.pyplot(fig)
@@ -459,7 +460,7 @@ elif page == "📉 Model Comparison":
     st.markdown("_ _ _")
 
     st.write("""
-This section compares the performance of all classificarion models trained for predicting the user's Primary Phone Usage""")
+This section compares the performance of all classification models trained for predicting the user's Primary Phone Usage""")
     st.markdown("_ _ _")
 
     model_results = pd.DataFrame({
