@@ -149,6 +149,48 @@ The web application includes:
 
 ---
 
+## 📸 Application Screenshots
+
+### Home
+
+![Home](screenshots/home.png)
+
+---
+
+### Dataset Explorer
+
+![Dataset Explorer](screenshots/dataset_explorer.png)
+
+---
+
+### EDA Dashboard
+
+![EDA Dashboard](screenshots/eda_dashboard.png)
+
+---
+
+### Prediction
+
+![Prediction](screenshots/prediction.png)
+
+---
+
+### Clustering
+
+![Clustering](screenshots/clustering.png)
+
+---
+
+### Model Comparison
+
+![Model Comparison](screenshots/model_comparison.png)
+
+---
+
+### About
+
+![About](screenshots/about.png)
+
 # 📁 Project Structure
 
 ```
