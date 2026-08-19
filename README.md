@@ -1,4 +1,4 @@
-# 📱 Phone Usage Pattern Prediction using Machine Learning
+# 📱 Decoding Phone Usage Pattern Prediction using Machine Learning
 
 ## 📖 Project Overview
 
