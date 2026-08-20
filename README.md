@@ -1,5 +1,9 @@
 # 📱 Decoding Phone Usage Pattern Prediction using Machine Learning
+## 🚀 Live Demo
 
+[Open the Live Application](https://rao274563-cpu-phone-usage-pattern-prediction-app-bcvgyw.streamlit.app/)
+
+...
 ## 📖 Project Overview
 
 Phone Usage Pattern Prediction is an end-to-end Machine Learning project that predicts a user's **Primary Phone Usage** based on demographic information and smartphone usage behavior. The project also performs **customer segmentation using clustering algorithms** to discover groups of users with similar smartphone usage patterns.
