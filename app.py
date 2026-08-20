@@ -25,7 +25,7 @@ with open("models/feature_columns.pkl", "rb") as file:
 
 #Configuration
 st.set_page_config(
-    page_title="Phone Usage Pattern Prediction",
+    page_title="Decoding Phone Usage Pattern Prediction",
     page_icon="📱",
     layout="wide"
 )
@@ -35,21 +35,6 @@ def load_data():
     df = pd.read_csv("data/phone_usage_india.csv")
     return df
 df = load_data()
-
-#st.title("📱 Phone Usage Pattern Prediction")
-st.markdown("""
-<h2 style='font-size:36px; font-weight:600; margin-bottom:10px;'>
-Phone Usage Pattern Prediction
-</h2>
-""", unsafe_allow_html=True)
-
-st.write(
-    """
-    Welcome to my Machine Learning Project.
-    
-    This application predicts a user's primary phone usage and also demonstrates clustering analysis performed on the dataset.
-    """
-)
 
 
 #Slidebar
@@ -72,9 +57,17 @@ if page == "🏠 Home":
     #st.title("📱 Phone Usage Pattern Prediction")
     st.markdown("""
 <h2 style='font-size:36px; font-weight:600; margin-bottom:10px;'>
-📱Phone Usage Pattern Prediction
+📱Decoding Phone Usage Pattern Prediction
 </h2>
 """, unsafe_allow_html=True)
+    st.write(
+    """
+    Welcome to my Machine Learning Project.
+    
+    This application predicts a user's primary phone usage and also demonstrates clustering analysis performed on the dataset.
+    """
+    )
+    
     st.markdown("_ _ _")
     st.header("🎯 Project Objective")
     st.write(
